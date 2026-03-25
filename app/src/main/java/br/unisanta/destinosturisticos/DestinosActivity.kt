@@ -2,72 +2,70 @@ package br.unisanta.destinosturisticos
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import android.widget.Button
-import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class DestinosActivity : AppCompatActivity() {
 
-    private lateinit var adaptador: DestinoListAdapter
-    private lateinit var listView: ListView
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: DestinoAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_destinos)
 
-        listView = findViewById(R.id.listaDestinos)
-        val botaoNovo = findViewById<Button>(R.id.botaoNovo)
+        recyclerView = findViewById(R.id.recyclerDestinos)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
-        adaptador = DestinoListAdapter()
-        listView.adapter = adaptador
-
-        botaoNovo.setOnClickListener {
-            startActivity(Intent(this, CadastroDestinoActivity::class.java))
-        }
+        adapter = DestinoAdapter()
+        recyclerView.adapter = adapter
     }
 
     override fun onResume() {
         super.onResume()
-        adaptador.notifyDataSetChanged()
+        adapter.notifyDataSetChanged()
     }
 
-    inner class DestinoListAdapter : BaseAdapter() {
+    inner class DestinoAdapter : RecyclerView.Adapter<DestinoAdapter.DestinoViewHolder>() {
 
-        override fun getCount(): Int = GerenciadorDestinos.lista.size
+        inner class DestinoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+            val tvNome: TextView = view.findViewById(R.id.tvNome)
+            val tvPaisRegiao: TextView = view.findViewById(R.id.tvPaisRegiao)
+            val btnExplorar: Button = view.findViewById(R.id.btnExplorar)
+            val btnExcluir: Button = view.findViewById(R.id.btnExcluir)
+        }
 
-        override fun getItem(pos: Int): Destino = GerenciadorDestinos.lista[pos]
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DestinoViewHolder {
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_destino, parent, false)
+            return DestinoViewHolder(view)
+        }
 
-        override fun getItemId(pos: Int): Long = pos.toLong()
+        override fun onBindViewHolder(holder: DestinoViewHolder, position: Int) {
+            val destino = GerenciadorDestinos.destinos[position]
 
-        override fun getView(pos: Int, convertView: View?, parent: ViewGroup?): View {
-            val view = convertView ?: layoutInflater.inflate(R.layout.item_destino, parent, false)
+            holder.tvNome.text = destino.nome
+            holder.tvPaisRegiao.text = destino.paisRegiao
 
-            val destino = getItem(pos)
-            val tvTitulo = view.findViewById<TextView>(R.id.tvTitulo)
-            val tvLocal = view.findViewById<TextView>(R.id.tvLocal)
-            val btnAbrir = view.findViewById<Button>(R.id.btnAbrir)
-            val btnRemover = view.findViewById<Button>(R.id.btnRemover)
-
-            tvTitulo.text = destino.titulo
-            tvLocal.text = destino.local
-
-            btnAbrir.setOnClickListener {
+            holder.btnExplorar.setOnClickListener {
                 val intent = Intent(this@DestinosActivity, NavegadorActivity::class.java)
-                intent.putExtra("link", destino.link)
-                intent.putExtra("titulo", destino.titulo)
+                intent.putExtra("url", destino.url)
                 startActivity(intent)
             }
 
-            btnRemover.setOnClickListener {
-                GerenciadorDestinos.lista.removeAt(pos)
+            holder.btnExcluir.setOnClickListener {
+                GerenciadorDestinos.destinos.removeAt(position)
                 notifyDataSetChanged()
             }
+        }
 
-            return view
+        override fun getItemCount(): Int {
+            return GerenciadorDestinos.destinos.size
         }
     }
 }

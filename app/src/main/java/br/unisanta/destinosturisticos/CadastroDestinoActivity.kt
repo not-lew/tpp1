@@ -14,32 +14,32 @@ class CadastroDestinoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro_destino)
 
-        val campoTitulo = findViewById<EditText>(R.id.campoTitulo)
-        val campoLocal = findViewById<EditText>(R.id.campoLocal)
-        val campoLink = findViewById<EditText>(R.id.campoLink)
-        val botaoGravar = findViewById<Button>(R.id.botaoGravar)
-        val linkListagem = findViewById<TextView>(R.id.linkListagem)
+        val etNome = findViewById<EditText>(R.id.etNome)
+        val etPaisRegiao = findViewById<EditText>(R.id.etPaisRegiao)
+        val etUrl = findViewById<EditText>(R.id.etUrl)
+        val btnSalvar = findViewById<Button>(R.id.btnSalvar)
+        val tvVerLista = findViewById<TextView>(R.id.tvVerLista)
 
-        botaoGravar.setOnClickListener {
-            val titulo = campoTitulo.text.toString().trim()
-            val local = campoLocal.text.toString().trim()
-            val link = campoLink.text.toString().trim()
+        btnSalvar.setOnClickListener {
+            val nome = etNome.text.toString()
+            val paisRegiao = etPaisRegiao.text.toString()
+            val url = etUrl.text.toString()
 
-            if (titulo.isEmpty() || local.isEmpty() || link.isEmpty()) {
-                Toast.makeText(this, "Preencha tudo!", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            if (nome.isEmpty() || paisRegiao.isEmpty() || url.isEmpty()) {
+                Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show()
+            } else {
+                val destino = Destino(nome, paisRegiao, url)
+                GerenciadorDestinos.destinos.add(destino)
+                Toast.makeText(this, "Destino salvo!", Toast.LENGTH_SHORT).show()
+                etNome.text.clear()
+                etPaisRegiao.text.clear()
+                etUrl.text.clear()
             }
-
-            GerenciadorDestinos.lista.add(Destino(titulo, local, link))
-            Toast.makeText(this, "Destino gravado!", Toast.LENGTH_SHORT).show()
-
-            campoTitulo.text.clear()
-            campoLocal.text.clear()
-            campoLink.text.clear()
         }
 
-        linkListagem.setOnClickListener {
-            startActivity(Intent(this, DestinosActivity::class.java))
+        tvVerLista.setOnClickListener {
+            val intent = Intent(this, DestinosActivity::class.java)
+            startActivity(intent)
         }
     }
 }

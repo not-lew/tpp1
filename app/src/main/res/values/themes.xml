@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.DestinosTuristicos" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">@color/azul_primario</item>
-        <item name="colorPrimaryDark">@color/azul_escuro</item>
-        <item name="colorAccent">@color/azul_primario</item>
-        <item name="android:statusBarColor">@color/azul_escuro</item>
-    </style>
+    <style name="Theme.DestinosTuristicos" parent="Theme.MaterialComponents.Light.DarkActionBar" />
 </resources>

@@ -4,80 +4,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="32dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Novo Destino"
+        android:text="Cadastro de Destino"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:textColor="#1565C0"
         android:layout_marginBottom="24dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/etNome"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nome do destino"
-        android:textSize="13sp"
-        android:textColor="#555555" />
+        android:hint="Nome do Destino"
+        android:inputType="text" />
 
     <EditText
-        android:id="@+id/campoTitulo"
+        android:id="@+id/etPaisRegiao"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
+        android:hint="País/Região"
         android:inputType="text"
-        android:padding="12dp"
-        android:background="@android:drawable/edit_text" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="País ou região"
-        android:textSize="13sp"
-        android:textColor="#555555"
-        android:layout_marginTop="14dp" />
+        android:layout_marginTop="8dp" />
 
     <EditText
-        android:id="@+id/campoLocal"
+        android:id="@+id/etUrl"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:inputType="text"
-        android:padding="12dp"
-        android:background="@android:drawable/edit_text" />
-
-    <TextView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="URL de referência"
-        android:textSize="13sp"
-        android:textColor="#555555"
-        android:layout_marginTop="14dp" />
-
-    <EditText
-        android:id="@+id/campoLink"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:hint="URL de Referência"
         android:inputType="textUri"
-        android:padding="12dp"
-        android:background="@android:drawable/edit_text" />
+        android:layout_marginTop="8dp" />
 
     <Button
-        android:id="@+id/botaoGravar"
+        android:id="@+id/btnSalvar"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:text="Gravar"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#1565C0"
+        android:layout_height="wrap_content"
+        android:text="Salvar"
         android:layout_marginTop="24dp" />
 
     <TextView
-        android:id="@+id/linkListagem"
+        android:id="@+id/tvVerLista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ver destinos cadastrados"
+        android:text="Ver lista"
         android:textColor="#1565C0"
-        android:textSize="14sp"
         android:layout_marginTop="16dp"
         android:layout_gravity="center"
         android:clickable="true"

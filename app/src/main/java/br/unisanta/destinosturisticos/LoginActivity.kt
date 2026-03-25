@@ -14,25 +14,26 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val campoUsuario = findViewById<EditText>(R.id.campoUsuario)
-        val campoSenha = findViewById<EditText>(R.id.campoSenha)
-        val botaoLogin = findViewById<Button>(R.id.botaoLogin)
-        val linkCadastro = findViewById<TextView>(R.id.linkCadastro)
+        val etUsuario = findViewById<EditText>(R.id.etUsuario)
+        val etSenha = findViewById<EditText>(R.id.etSenha)
+        val btnEntrar = findViewById<Button>(R.id.btnEntrar)
+        val tvCadastrese = findViewById<TextView>(R.id.tvCadastrese)
 
-        botaoLogin.setOnClickListener {
-            val usuario = campoUsuario.text.toString()
-            val senha = campoSenha.text.toString()
+        btnEntrar.setOnClickListener {
+            val usuario = etUsuario.text.toString()
+            val senha = etSenha.text.toString()
 
             if (usuario == "admin" && senha == "1234") {
-                startActivity(Intent(this, DestinosActivity::class.java))
-                finish()
+                val intent = Intent(this, DestinosActivity::class.java)
+                startActivity(intent)
             } else {
-                Toast.makeText(this, "Login ou senha errados", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Usuário ou senha incorretos!", Toast.LENGTH_SHORT).show()
             }
         }
 
-        linkCadastro.setOnClickListener {
-            startActivity(Intent(this, CadastroDestinoActivity::class.java))
+        tvCadastrese.setOnClickListener {
+            val intent = Intent(this, CadastroDestinoActivity::class.java)
+            startActivity(intent)
         }
     }
 }

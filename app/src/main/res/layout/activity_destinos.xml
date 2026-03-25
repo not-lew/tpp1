@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Meus Destinos"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:background="#1565C0"
+        android:padding="16dp"
+        android:gravity="center" />
+
+    <ListView
+        android:id="@+id/listaDestinos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="#DDDDDD"
+        android:dividerHeight="1dp"
+        android:padding="8dp"
+        android:clipToPadding="false" />
+
+    <Button
+        android:id="@+id/botaoNovo"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="+ Adicionar Destino"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#1565C0"
+        android:layout_margin="12dp" />
+
+</LinearLayout>

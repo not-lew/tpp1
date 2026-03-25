@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Novo Destino"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#1565C0"
+        android:layout_marginBottom="24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome do destino"
+        android:textSize="13sp"
+        android:textColor="#555555" />
+
+    <EditText
+        android:id="@+id/campoTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:inputType="text"
+        android:padding="12dp"
+        android:background="@android:drawable/edit_text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="País ou região"
+        android:textSize="13sp"
+        android:textColor="#555555"
+        android:layout_marginTop="14dp" />
+
+    <EditText
+        android:id="@+id/campoLocal"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:inputType="text"
+        android:padding="12dp"
+        android:background="@android:drawable/edit_text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="URL de referência"
+        android:textSize="13sp"
+        android:textColor="#555555"
+        android:layout_marginTop="14dp" />
+
+    <EditText
+        android:id="@+id/campoLink"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:inputType="textUri"
+        android:padding="12dp"
+        android:background="@android:drawable/edit_text" />
+
+    <Button
+        android:id="@+id/botaoGravar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Gravar"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#1565C0"
+        android:layout_marginTop="24dp" />
+
+    <TextView
+        android:id="@+id/linkListagem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver destinos cadastrados"
+        android:textColor="#1565C0"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:focusable="true" />
+
+</LinearLayout>

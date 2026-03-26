@@ -24,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
             val senha = etSenha.text.toString()
 
             if (usuario == "admin" && senha == "1234") {
-                val intent = Intent(this, DestinosActivity::class.java)
+                val intent = Intent(this, CadastroDestinoActivity::class.java)
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "Usuário ou senha incorretos!", Toast.LENGTH_SHORT).show()
